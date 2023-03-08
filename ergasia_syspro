@@ -1,0 +1,242 @@
+#!/bin/sh
+#chmod +x ergasia_syspro
+#./ergasia_syspro input.txt am.txt email.txt 
+echo "   Am  Telikos ">$2
+echo "       email">$3
+arxeio2=$2 
+arxeio3=$3
+
+#############################################
+if [ -f $1 ];then
+echo "ola kala me to arxeio"		#elenxos arxeiou#
+else 
+echo "paei to arxeio"
+fi
+#############################################
+cat $1| while read variable #diabazo grammi grammi#
+do
+echo $variable 
+set $variable
+#echo $2 
+apousies=0
+x=`expr length $2` #posa ergastiria eginan#
+#echo $x  	#ektiposi arithmou ergastiriou#	
+am=`expr substr $1 1 4`
+echo $am
+#y=`expr 2022 - $am `
+#echo $y  
+##############################################################
+i=1
+	while [ $i -le $x ] #  <=  #
+	do
+	
+	a=`expr substr $2 $i 1` #diabazei 
+	#echo $a 
+	if [ $a -eq 0 ];then # == #	
+	apousies=`expr $apousies + 1` #apousies#
+	
+	fi
+	i=`expr $i + 1`
+	done
+#echo $apousies
+##############################################################
+if [ $3 -ge $4 ] && [ $3 -ge $5 ]; then  # >= #
+    	
+        if [ $4 -ge $5 ]; then # >= #
+        	bathmos=`expr $4 \* 2 + $3 \* 2 + $6 \* 3 + $7 \* 3` 
+         
+            #echo $4 $3
+        
+        else
+        	bathmos=`expr $3 \* 2 + $5 \* 2 + $6 \* 3 + $7 \* 3 `
+            echo $3 $5
+      	 fi 
+    
+    elif [ $4 -ge $3 ] && [ $4 -ge $5 ];then # >= #
+    
+        if [ $3 -ge $5 ];then # >= #
+        	bathmos=`expr $3 \* 2 + $4 \* 2 + $6 \* 3 + $7 \* 3 `
+           #echo $3 $4
+        
+        else
+        	bathmos=`expr $4 \* 2 + $5 \* 2 + $6 \* 3 + $7 \* 3 `
+           #echo $4 $5
+       fi 
+    
+
+   
+    elif [ $3 -ge $4 ];then # >= #
+    	bathmos=`expr $3 \* 2 + $5 \* 2 + $6 \* 3 + $7 \* 3 `
+        #echo $3 $5
+	
+    else
+    	bathmos=`expr $4 \* 2 + $5 \* 2 + $6 \* 3 + $7 \* 3 ` 
+        #echo $4 $5
+    
+	fi
+	echo $bathmos
+################################################################	
+	metabliti1=`expr $bathmos / 10`
+	#echo " edo $metabliti1"
+	metabliti2=`expr $metabliti1 \* 10`
+	#echo " edo1 $metabliti2"
+	metabliti3=`expr $bathmos - $metabliti2`		# epitelous strogkilopoihsi #	
+	#echo $metabliti3
+	if [ $metabliti3 -lt 5 ];then
+	echo $metabliti1
+	else  
+	metabliti1=`expr $metabliti1 + 1`
+	echo $metabliti1
+	fi
+################################################################	 
+	 
+	#test1=`expr $bathmos / 10`
+	#echo $test1
+	#echo $bathmos | awk '{print int($1+0.5)}'
+#########################################################
+if [ $x -le 10 ];then
+	echo "dokimi1"
+	if [ $apousies -le 2 ]; then
+        echo "perases apo apousies"   
+        	if [ $am -le 2017  ];then	 
+        	echo "eisai palios"
+        		if [ $apousies -eq 0 ];then
+        			if [ $bathmos -ge 40 ];then
+        			echo "perases1"
+        			echo "$1       $metabliti1">>$arxeio2
+        				if [ $bathmos -gt 85 ];then
+        				echo "$1@cs.teikal.gr"
+        				echo "$1@cs.teikal.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        			else 
+        			
+        			echo "kopikes1"
+        			echo "$1    -">>$arxeio2
+        			fi
+        		elif [ $bathmos -ge 45 ];then 
+        		 	echo "perases2"
+        		 	echo "$1       $metabliti1">>$arxeio2
+        		 	if [ $bathmos -gt 85 ];then
+        				echo "$1@cs.teikal.gr"
+        				echo "$1@cs.teikal.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        		else  
+        			echo "kopikes2"
+        			echo "$1    -">>$arxeio2
+        		fi
+        	else
+        	echo "eisai neos"
+        	#echo $apousies
+        		if [ $apousies -eq 0 ];then
+        			if [ $bathmos -ge 45 ];then
+        			echo "perases nee me anesi "
+        			echo "$1       $metabliti1">>$arxeio2
+        			if [ $bathmos -gt 85 ];then
+        				echo "$1@ds.uop.gr"
+        				echo "$1@ds.uop.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        			else 
+        			
+        			echo "kopikes nee me anesi"
+        			echo "$1    -">>$arxeio2
+        			fi
+        		elif [ $bathmos -ge 50 ];then 
+        		 	echo "perasesnee"
+        		 	echo "$1       $metabliti1">>$arxeio2
+        		 	if [ $bathmos -gt 85 ];then
+        				echo "$1@ds.uop.gr"
+        				echo "$1@ds.uop.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        		else  
+        			echo "kopikesnee"
+        			echo "$1    -">>$arxeio2
+        			
+        		fi
+        	fi												
+        else
+        echo "kopikes apo apousies"
+        echo "$1    -">>$arxeio2    
+	fi
+###########################################################
+elif [ $x -gt 10 ];then
+	echo "dokimi2"
+	if [ $apousies -le 3 ]; then
+        echo "perases apo apousies"   
+        	if [ $am -le 2017  ];then	 
+        	echo "eisai palios"
+        		if [ $apousies -eq 0 ];then
+        			if [ $bathmos -ge 40 ];then
+        			echo "perases1"
+        			echo "$1       $metabliti1">>$arxeio2
+        				if [ $bathmos -gt 85 ];then
+        				echo "$1@cs.teikal.gr"
+        				echo "$1@cs.teikal.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        			else 
+        			
+        			echo "kopikes1"
+        			echo "$1    -">>$arxeio2
+        			fi
+        		elif [ $bathmos -ge 45 ];then 
+        		 	echo "perases2"
+        		 	echo "$1       $metabliti1">>$arxeio2
+        		 	if [ $bathmos -gt 85 ];then
+        				echo "$1@cs.teikal.gr"
+        				echo "$1@cs.teikal.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        		else  
+        			echo "kopikes2"
+        			echo "$1    -">>$arxeio2
+        		fi
+        	else
+        	echo "eisai neos"
+        	#echo $apousies
+        		if [ $apousies -eq 0 ];then
+        			if [ $bathmos -ge 45 ];then
+        			echo "perases nee me anesi "
+        			echo "$1       $metabliti1">>$arxeio2
+        			if [ $bathmos -gt 85 ];then
+        				echo "$1@ds.uop.gr"
+        				echo "$1@ds.uop.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        			else 
+        			
+        			echo "kopikes nee me anesi"
+        			echo "$1    -">>$arxeio2
+        			fi
+        		elif [ $bathmos -ge 50 ];then 
+        		 	echo "perasesnee"
+        		 	echo "$1       $metabliti1">>$arxeio2
+        		 	if [ $bathmos -gt 85 ];then
+        				echo "$1@ds.uop.gr"
+        				echo "$1@ds.uop.gr">>$arxeio3
+        				else 
+        				echo "den eisai aristos"
+        				fi
+        		else  
+        			echo "kopikesnee"
+        			echo "$1    -">>$arxeio2
+        		fi
+        	fi												
+        else
+        echo "kopikes apo apousies"
+        echo "$1    -">>$arxeio2   
+	fi
+fi
+
+
+done
